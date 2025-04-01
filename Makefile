@@ -18,12 +18,13 @@ ARCHIVE_DIR  := $(PWD)/plugins
 # We need to instruct the `rabbitmq-dist:do-dist` target to not
 # remove our plugin and related dependencies.
 EXTRA_DIST_EZS = $(shell find $(ARCHIVE_DIR) -name '*.ez')
+
 app:: $(elixir_srcs) deps
 	$(MIX) make_app
 
 dist:: app
 	mkdir -p $(DIST_DIR)
-	ARCHIVE_DIR=$(ARCHIVE_DIR) $(MIX) make_archives
+	$(MIX) make_archives
 
 clean::
 	@rm -fr _build
