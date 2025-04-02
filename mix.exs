@@ -7,7 +7,7 @@ defmodule RabbitMQCloudWatchExporter.Mixfile do
       version: get_version(),
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps("deps"),
+      deps: deps(),
       deps_path: System.get_env("DEPS_DIR", "deps"),
       aliases: aliases()
     ]
@@ -28,7 +28,7 @@ defmodule RabbitMQCloudWatchExporter.Mixfile do
     |> String.replace_prefix("v", "") 
   end
 
-  defp deps(deps_dir) do
+  defp deps() do
     [
       {:ex_aws, "~> 2.5.7"},
       {:ex_aws_cloudwatch, "~> 2.0.4"},
